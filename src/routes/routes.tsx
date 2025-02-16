@@ -5,6 +5,7 @@ import ProtectedRoute from '../components/ProtectedRoute';
 import { AddPatient, EditPatient, Login, PatientListPage } from '../pages';
 import PublicRoute from '../components/PublicRoute';
 import NotFound from '../pages/notFound';
+import { Role } from '../types/apiTypes';
 
 const routes = [
   {
@@ -25,8 +26,22 @@ const routes = [
         element: <ProtectedRoute />,
         children: [
           { path: '/', element: <PatientListPage /> },
-          { path: 'add-patient', element: <AddPatient /> },
-          { path: 'edit-patient/:id', element: <EditPatient /> }
+          {
+            path: 'add-patient',
+            element: (
+              <ProtectedRoute allowedRoles={[Role.Doctor]}>
+                <AddPatient />
+              </ProtectedRoute>
+            )
+          },
+          {
+            path: 'edit-patient/:id',
+            element: (
+              <ProtectedRoute allowedRoles={[Role.Doctor, Role.Admin]}>
+                <EditPatient />
+              </ProtectedRoute>
+            )
+          }
         ]
       },
       // Fallback route

@@ -11,6 +11,7 @@ export interface DateInputProps
 
 const DateInput: React.FC<DateInputProps> = ({ value, onChange, ...rest }) => {
   const dateValue = value ? dayjs(value, 'YYYY-MM-DD') : null;
+  //@ts-ignore
   const handleChange = (_, dateString: string | string[]) => {
     if (onChange) {
       if (Array.isArray(dateString)) {

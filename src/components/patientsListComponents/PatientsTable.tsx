@@ -26,12 +26,13 @@ function PatientsTable() {
 
   const translatedColumns = patients_table_columns.map((col) => ({
     ...col,
-    ...{ title: t(col.title) }
+    ...{ title: <>{t(col.title)}</> }
   }));
+  // console.log(t(translatedColumns[0].title))
   const columns =
     user.role === Role.Admin || user.role === Role.Doctor
       ? [...translatedColumns, ...patients_table_columns_actions]
-      : patients_table_columns;
+      : [...translatedColumns];
 
   const dataSource = patients?.data.map((patient: Patient) => ({
     ...patient.personalInfo,

@@ -11,7 +11,7 @@ export interface LoginCredentials {
 export interface LoginResponse {
   token: string;
   username: string;
-  role: 'admin' | 'doctor' | 'nurse';
+  role: Role;
   clinic?: string;
 }
 
@@ -25,7 +25,7 @@ export interface User {
   id: number;
   username: string;
   password: string;
-  role: 'admin' | 'doctor' | 'nurse';
+  role: Role;
 }
 
 export interface Symptom {
