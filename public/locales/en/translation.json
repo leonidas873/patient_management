@@ -1,0 +1,137 @@
+{
+  "patientManagement": "patient Management",
+  "darkMode": "dark mode",
+  "lightMode": "light mode",
+  "logout": "logout",
+  "notFound": {
+    "heading": "404 - Page Not Found",
+    "message": "The page you are looking for does not exist.",
+    "goHome": "Go Home"
+  },
+  "login": {
+    "heading": "Login",
+    "username": "Username",
+    "password": "Password",
+    "usernamePlaceholder": "Enter your username",
+    "passwordPlaceholder": "Enter your password",
+    "usernameRequired": "Please input your username!",
+    "passwordRequired": "Please input your password!",
+    "submit": "Login",
+    "error": "Login failed. Please try again."
+  },
+  "patientsFilter": {
+    "heading": "Filter",
+    "name": "Name",
+    "surname": "Surname",
+    "addedDateRange": "Added Date Range",
+    "personalId": "Personal ID",
+    "status": "Status",
+    "filterButton": "Filter",
+    "resetButton": "Reset",
+    "activeFilters": "Active Filters",
+    "from": "From",
+    "to": "To",
+    "selectStatus": "Select status",
+    "loading": "Loading diseases...",
+    "error": "Error loading diseases",
+    "dateFrom": "Date From",
+    "dataTo": "Date To",
+    "active": "Active",
+    "inactive": "Inactive",
+    "pending": "Pending"
+  },
+  "patientsTable": {
+    "columns": {
+      "name": "Name",
+      "surname": "Surname",
+      "birthDate": "Birth Date",
+      "status": "Status"
+    },
+    "header": {
+      "h2": "Patients List",
+      "addPatient": "Add Patient"
+    }
+  },
+  "actions": {
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "deleteConfirmationTitle": "Confirm Deletion",
+    "deleteConfirmationMessage": "Do you want to delete this patient?",
+    "edit": "Edit",
+    "ok": "OK",
+    "cancel": "cancel"
+  },
+  "table": {
+    "emptyText": "no data"
+  },
+  "doctorCard": {
+    "username": "Username",
+    "clinic": "Clinic"
+  },
+  "patientForm": {
+    "personalInfoTab": "Personal Info",
+    "conditionTab": "Condition",
+    "financialRecordsTab": "Financial Records",
+    "submit": "Submit"
+  },
+  "conditionForm": {
+    "diseaseLabel": "Disease",
+    "diseaseRequired": "Disease is required",
+    "loadingDiseases": "Loading diseases...",
+    "errorLoadingDiseases": "Error loading diseases",
+    "selectDisease": "Select disease",
+    "symptomNameLabel": "Symptom Name",
+    "symptomNameRequired": "Symptom name is required",
+    "noteDateLabel": "Note Date",
+    "noteDateRequired": "Note date is required",
+    "severityLabel": "Severity",
+    "severityRequired": "Severity is required",
+    "addSymptom": "Add Symptom"
+  },
+  "personalInfoForm": {
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "firstNameRequired": "First Name is required",
+    "personalId": "Personal ID",
+    "personalIdPlaceholder": "Enter your personal ID",
+    "personalIdRequired": "Personal ID is required",
+    "surname": "Surname",
+    "surnamePlaceholder": "Enter your surname",
+    "surnameRequired": "Surname is required",
+    "birthDate": "Date of Birth",
+    "birthDatePlaceholder": "Select your birth date",
+    "birthDateRequired": "Birth Date is required",
+    "country": "Country",
+    "countryPlaceholder": "Enter your country",
+    "countryRequired": "Country is required",
+    "gender": "Gender",
+    "genderPlaceholder": "Select your gender",
+    "genderRequired": "Gender is required",
+    "genderMale": "Male",
+    "genderFemale": "Female",
+    "genderOther": "Other",
+    "phone": "Phone",
+    "phoneRequired": "Phone is required"
+  },
+  "financialRecordsTable": {
+    "service": "Service",
+    "amount": "Amount",
+    "date": "Date"
+  },
+  "phoneInput": {
+    "placeholder": "Enter phone number",
+    "errorNoPhone": "Please enter a phone number.",
+    "otpSent": "OTP code sent!",
+    "otpFailed": "Failed to send code",
+    "otpRequired": "Please enter the OTP",
+    "phoneVerified": "Phone verified!",
+    "otpVerificationFailed": "OTP verification failed",
+    "sendCode": "Send Code",
+    "verified": "Verified",
+    "verifyPhoneNumber": "Verify Phone Number",
+    "verifyOtp": "Verify OTP",
+    "cancel": "Cancel",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "Enter OTP"
+  }
+}

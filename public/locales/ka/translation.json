@@ -1,0 +1,139 @@
+{
+  "patientManagement": "პაციენტების მართვა",
+  "darkMode": "მუქი რეჟიმი",
+  "lightMode": "ნათელი რეჟიმი",
+  "logout": "გასვლა",
+  "notFound": {
+    "heading": "404 - გვერდი არ მოიძებნა",
+    "message": "თქვენ მიერ ძებნილი გვერდი არ არსებობს.",
+    "goHome": "მთავარ გვერდზე დაბრუნება"
+  },
+  "login": {
+    "heading": "შესვლა",
+    "username": "მომხმარებლის სახელი",
+    "password": "პაროლი",
+    "usernamePlaceholder": "შეიყვანეთ თქვენი მომხმარებლის სახელი",
+    "passwordPlaceholder": "შეიყვანეთ თქვენი პაროლი",
+    "usernameRequired": "გთხოვთ, შეიყვანეთ თქვენი მომხმარებლის სახელი!",
+    "passwordRequired": "გთხოვთ, შეიყვანეთ თქვენი პაროლი!",
+    "submit": "შესვლა",
+    "error": "შესვლა ვერ მოხერხდა. გთხოვთ, სცადოთ თავიდან."
+  },
+  "patientsFilter": {
+    "heading": "ფილტრი",
+    "name": "სახელი",
+    "surname": "გვარი",
+    "addedDateRange": "დამატების თარიღის შუალედი",
+    "personalId": "პირადი ნომერი",
+    "status": "სტატუსი",
+    "filterButton": "ფილტრი",
+    "resetButton": "გასუფთავება",
+    "activeFilters": "აქტიური ფილტრები",
+    "from": "დან",
+    "to": "მდე",
+    "selectStatus": "აირჩიეთ სტატუსი",
+    "loading": "დარეკავს დაავადებების სიას...",
+    "error": "დარღვია დაავადებების ჩამოყალიბება",
+    "dateFrom": "დან",
+    "dateTo": "მდე",
+    "active": "აქტიური",
+    "inactive": "არაქტიური",
+    "pending": "ლოდინგში"
+  },
+  "patientsTable": {
+    "columns": {
+      "name": "სახელი",
+      "surname": "გვარი",
+      "birthDate": "დაბადების თარიღი",
+      "status": "სტატუსი"
+    },
+    "header": {
+      "h2": "პაციენტების სია",
+      "addPatient": "დაამატე პაციენტი"
+    }
+  },
+  "actions": {
+    "delete": "წაშლა",
+    "deleting": "წაშლის პროცესში...",
+    "deleteConfirmationTitle": "წაშლის დადასტურება",
+    "deleteConfirmationMessage": "გსურთ პაციენტის წაშლა?",
+    "edit": "რედაქტირება",
+    "ok": "დიახ",
+    "cancel": "გაუქმება"
+  },
+
+  "table": {
+    "emptyText": "მონაცემები არ არის"
+  },
+  "doctorCard": {
+    "username": "მომხმარებლის სახელი",
+    "clinic": "კლინიკა"
+  },
+
+  "patientForm": {
+    "personalInfoTab": "პირადი ინფორმაცია",
+    "conditionTab": "მდგომარეობა",
+    "financialRecordsTab": "ფინანსური ჩანაწერები",
+    "submit": "გაგზავნა"
+  },
+  "conditionForm": {
+    "diseaseLabel": "დაავადება",
+    "diseaseRequired": "დაავადება აუცილებელია",
+    "loadingDiseases": "დაავადებები ჩატვირთულია...",
+    "errorLoadingDiseases": "დაავადებების ჩატვირთვა ვერ მოხერხდა",
+    "selectDisease": "აირჩიეთ დაავადება",
+    "symptomNameLabel": "სიმპტომის სახელი",
+    "symptomNameRequired": "სიმპტომის სახელი აუცილებელია",
+    "noteDateLabel": "შენიშვნის თარიღი",
+    "noteDateRequired": "შენიშვნის თარიღი აუცილებელია",
+    "severityLabel": "სიმწვავის დონე",
+    "severityRequired": "სიმწვავის დონე აუცილებელია",
+    "addSymptom": "სიმპტომის დამატება"
+  },
+  "personalInfoForm": {
+    "firstName": "სახელი",
+    "firstNamePlaceholder": "შეიყვანეთ თქვენი სახელი",
+    "firstNameRequired": "სახელი აუცილებელია",
+    "personalId": "პირადი ნომერი",
+    "personalIdPlaceholder": "შეიყვანეთ თქვენი პირადი ნომერი",
+    "personalIdRequired": "პირადი ნომერი აუცილებელია",
+    "surname": "გვარი",
+    "surnamePlaceholder": "შეიყვანეთ თქვენი გვარი",
+    "surnameRequired": "გვარი აუცილებელია",
+    "birthDate": "დაბადების თარიღი",
+    "birthDatePlaceholder": "აირჩიეთ დაბადების თარიღი",
+    "birthDateRequired": "დაბადების თარიღი აუცილებელია",
+    "country": "ქვეყანა",
+    "countryPlaceholder": "შეიყვანეთ თქვენი ქვეყანა",
+    "countryRequired": "ქვეყანა აუცილებელია",
+    "gender": "სქესი",
+    "genderPlaceholder": "აირჩიეთ თქვენი სქესი",
+    "genderRequired": "სქესი აუცილებელია",
+    "genderMale": "მამრობითი",
+    "genderFemale": "მდედრობითი",
+    "genderOther": "სხვა",
+    "phone": "ტელეფონი",
+    "phoneRequired": "ტელეფონი აუცილებელია"
+  },
+  "financialRecordsTable": {
+    "service": "სერვისი",
+    "amount": "თანხა",
+    "date": "თარიღი"
+  },
+  "phoneInput": {
+    "placeholder": "შეიყვანეთ ტელეფონის ნომერი",
+    "errorNoPhone": "გთხოვთ შეიყვანოთ ტელეფონის ნომერი.",
+    "otpSent": "OTP კოდი გაიგზავნა!",
+    "otpFailed": "OTP კოდის გაგზავნა ვერ მოხერხდა",
+    "otpRequired": "გთხოვთ შეიყვანოთ OTP",
+    "phoneVerified": "ტელეფონი ვერიფიცირდა!",
+    "otpVerificationFailed": "OTP ვერიფიკაცია ვერ მოხერხდა",
+    "sendCode": "კოდის გაგზავნა",
+    "verified": "ვერიფიცირდა",
+    "verifyPhoneNumber": "ტელეფონის ვერიფიკაცია",
+    "verifyOtp": "OTP ვერიფიკაცია",
+    "cancel": "გაუქმება",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "შეიყვანეთ OTP"
+  }
+}
