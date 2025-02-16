@@ -33,12 +33,11 @@ const LoginForm: React.FC = () => {
         >
           <Form.Item
             label={t('login.username')}
-            name="text"
+            name="username"
             rules={[{ required: true, message: t('login.usernameRequired') }]}
           >
             <Input placeholder={t('login.usernamePlaceholder')} />
           </Form.Item>
-
           <Form.Item
             label={t('login.password')}
             name="password"
