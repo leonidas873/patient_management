@@ -21,10 +21,11 @@ export const fetchPatients = async ({
 }): Promise<PatientsResponse> => {
   const [, filters] = queryKey;
   const { data } = await httpClient.get<PatientsResponse>(
-    `${ENDPOINTS.GET_ALL_PATIENTS}`
-  , {
-    params:filters
-  });
+    `${ENDPOINTS.GET_ALL_PATIENTS}`,
+    {
+      params: filters
+    }
+  );
   return data;
 };
 

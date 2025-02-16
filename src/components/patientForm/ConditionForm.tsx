@@ -40,57 +40,58 @@ function ConditionForm() {
       <Form.List name={['condition', 'symptoms']}>
         {(fields, { add, remove }) => (
           <>
-            {fields.map((field) => (
-              <Space
-                key={field.key + new Date().toString()}
-                align="center"
-                style={{ display: 'flex', marginBottom: 8 }}
-              >
-                <Form.Item
-                  {...field}
-                  name={[field.name, 'name']}
-                  rules={[
-                    {
-                      required: true,
-                      message: t('conditionForm.symptomNameRequired')
-                    }
-                  ]}
+            {fields.map((field) => {
+              const { key, ...restField } = field;
+              return (
+                <Space
+                  key={key}
+                  align="center"
+                  style={{ display: 'flex', marginBottom: 8 }}
                 >
-                  <Input placeholder={t('conditionForm.symptomNameLabel')} />
-                </Form.Item>
-                <Form.Item
-                  name={[field.name, 'noteDate']}
-                  rules={[
-                    {
-                      required: true,
-                      message: t('conditionForm.noteDateRequired')
-                    }
-                  ]}
-                  
-                >
-                  <DateInput
-                    placeholder={t('conditionForm.noteDateLabel')}
-                  />
-                </Form.Item>
+                  <Form.Item
+                    {...restField}
+                    name={[field.name, 'name']}
+                    rules={[
+                      {
+                        required: true,
+                        message: t('conditionForm.symptomNameRequired')
+                      }
+                    ]}
+                  >
+                    <Input placeholder={t('conditionForm.symptomNameLabel')} />
+                  </Form.Item>
+                  <Form.Item
+                    {...restField}
+                    name={[field.name, 'noteDate']}
+                    rules={[
+                      {
+                        required: true,
+                        message: t('conditionForm.noteDateRequired')
+                      }
+                    ]}
+                  >
+                    <DateInput placeholder={t('conditionForm.noteDateLabel')} />
+                  </Form.Item>
 
-                <Form.Item
-                  {...field}
-                  name={[field.name, 'severity']}
-                  rules={[
-                    {
-                      required: true,
-                      message: t('conditionForm.severityRequired')
-                    }
-                  ]}
-                >
-                  <Slider min={0} max={100} style={{ width: 200 }} />
-                </Form.Item>
-                <DeleteOutlined
-                  onClick={() => remove(field.name)}
-                  className="relative top-[-13px] cursor-pointer text-red-500"
-                />
-              </Space>
-            ))}
+                  <Form.Item
+                    {...restField}
+                    name={[field.name, 'severity']}
+                    rules={[
+                      {
+                        required: true,
+                        message: t('conditionForm.severityRequired')
+                      }
+                    ]}
+                  >
+                    <Slider min={0} max={100} style={{ width: 200 }} />
+                  </Form.Item>
+                  <DeleteOutlined
+                    onClick={() => remove(field.name)}
+                    className="relative top-[-13px] cursor-pointer text-red-500"
+                  />
+                </Space>
+              );
+            })}
             <Form.Item>
               <Button
                 type="dashed"

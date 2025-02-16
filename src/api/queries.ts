@@ -20,13 +20,16 @@ import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { useAuthStore } from '../store/authStore';
 import { PatientFormValues } from '../components/patientForm/PatientForm';
+import Cookies from 'js-cookie';
 
+const PATIENTS = 'PATIENTS';
+const patient = 'PATIENT';
 export function useDeletePatient() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id: number) => deletePatientApi(id),
     async onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ['patients'] });
+      queryClient.invalidateQueries({ queryKey: [PATIENTS] });
     },
     async onError(error: Error) {
       console.log(error);
@@ -44,7 +47,7 @@ export type PatientFilter = Partial<
 
 export const usePatientsQuery = (filters: PatientFilter) => {
   return useQuery<PatientsResponse, Error>({
-    queryKey: ['patients', filters],
+    queryKey: [PATIENTS, filters],
     queryFn: ({ queryKey }) =>
       fetchPatients({ queryKey: queryKey as [string, PatientFilter] })
   });
@@ -52,7 +55,7 @@ export const usePatientsQuery = (filters: PatientFilter) => {
 
 export const useGetPatient = (id: number) => {
   return useQuery<Patient, Error>({
-    queryKey: ['patient', id],
+    queryKey: [patient, id],
     queryFn: () => getPatientById(id),
     enabled: Boolean(id)
   });
@@ -65,7 +68,7 @@ export const useAddPatient = () => {
   return useMutation<Patient, Error, PatientFormValues>({
     mutationFn: addPatient,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['patients'] });
+      queryClient.invalidateQueries({ queryKey: [PATIENTS] });
       navigate('/');
     }
   });
@@ -78,8 +81,8 @@ export const useUpdatePatient = (id: number) => {
   return useMutation<Patient, Error, PatientFormValues>({
     mutationFn: (data: PatientFormValues) => updatePatient(id, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['patient', id] });
-      queryClient.invalidateQueries({ queryKey: ['patients'] });
+      queryClient.invalidateQueries({ queryKey: [patient, id] });
+      queryClient.invalidateQueries({ queryKey: [PATIENTS] });
       navigate('/');
     }
   });
@@ -94,7 +97,7 @@ export const useLogin = () => {
       navigate('/');
       const { token, ...updatedData } = data;
       setUser(updatedData);
-      localStorage.setItem("token",data.token)
+      Cookies.set('token', data.token);
     },
     onError: (error) => {
       message.error(error.message || 'Login failed. Please try again.');

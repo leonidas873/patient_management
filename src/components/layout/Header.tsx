@@ -35,7 +35,7 @@ const Header: React.FC = () => {
           {darkMode ? t('darkMode') : t('lightMode')}
         </Button>
         <Select
-          defaultValue={i18n.language}
+          defaultValue={i18n.language == 'en-GB' ? 'en' : 'ka'}
           style={{ width: 140 }}
           onChange={handleLanguageChange}
         >

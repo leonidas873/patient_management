@@ -1,9 +1,10 @@
 import React from 'react';
-import PatientForm, { PatientFormValues } from '../components/patientForm/PatientForm';
+import PatientForm, {
+  PatientFormValues
+} from '../components/patientForm/PatientForm';
 import { useGetPatient, useUpdatePatient } from '../api/queries';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import DoctorCard from '../components/DoctorCard';
-import { Patient } from '../types/apiTypes';
 
 const EditPatient: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -13,6 +14,7 @@ const EditPatient: React.FC = () => {
     mutate(values);
   };
   if (isLoading) return <div>Loading...</div>;
+  if (!data) return <Navigate to="/not-found" />;
   return (
     <div className="m-auto flex max-w-4xl flex-col items-stretch justify-center gap-4">
       <DoctorCard />

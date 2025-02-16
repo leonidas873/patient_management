@@ -1,7 +1,7 @@
 import axios from 'axios';
 import i18next from 'i18next';
 import { useAuthStore } from '../store/authStore';
-
+import Cookies from 'js-cookie';
 export const API_BASE_URL = '/api';
 
 const httpClient = axios.create({
@@ -13,7 +13,7 @@ const httpClient = axios.create({
 
 httpClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = Cookies.get('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

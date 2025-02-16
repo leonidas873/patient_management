@@ -1,6 +1,6 @@
 // src/components/patientForm/PatientForm.tsx
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Tabs, Card } from 'antd';
+import { Form, Button, Tabs, Card, TabsProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Condition, FinancialRecord, PersonalInfo } from '../../types/apiTypes';
 import PersonalInfoForm from './PersonalInfoForm';
@@ -66,6 +66,30 @@ const PatientForm: React.FC<PatientFormProps> = ({
     }
   };
 
+  const items: TabsProps['items'] = [
+    {
+      key: '1',
+      label: t('patientForm.personalInfoTab'),
+      children: <PersonalInfoForm />,
+      forceRender: true
+    },
+    {
+      key: '2',
+      label: t('patientForm.conditionTab'),
+      children: <ConditionForm />,
+      forceRender: true
+    },
+    {
+      key: '3',
+      label: t('patientForm.financialRecordsTab'),
+      children: (
+        <FinancialRecordsTable
+          records={defaultValues?.financialRecords || []}
+        />
+      )
+    }
+  ];
+
   return (
     <Card className="w-full">
       <Form
@@ -80,20 +104,8 @@ const PatientForm: React.FC<PatientFormProps> = ({
           type="card"
           activeKey={activeTab}
           onChange={(key) => setActiveTab(key)}
-          destroyInactiveTabPane={false}
-        >
-          <TabPane tab={t('patientForm.personalInfoTab')} key="1" forceRender>
-            <PersonalInfoForm />
-          </TabPane>
-          <TabPane tab={t('patientForm.conditionTab')} key="2" forceRender>
-            <ConditionForm />
-          </TabPane>
-          <TabPane tab={t('patientForm.financialRecordsTab')} key="3">
-            <FinancialRecordsTable
-              records={defaultValues?.financialRecords || []}
-            />
-          </TabPane>
-        </Tabs>
+          items={items}
+        />
         <Form.Item>
           <Button type="primary" htmlType="submit">
             {submitLabel || t('patientForm.submit')}

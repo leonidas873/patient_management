@@ -114,7 +114,7 @@ const PatientsFilter: React.FC = () => {
       </Form>
       {Object.keys(activeFilters).length > 0 && (
         <div className="mt-6">
-          <h3 className="mb-2 text-lg font-semibold text-gray-700">
+          <h3 className="mb-2 text-lg font-semibold text-gray-700 dark:text-white">
             {t('patientsFilter.activeFilters')}:
           </h3>
           <div className="flex flex-wrap gap-2">

@@ -34,7 +34,7 @@ export const patients_table_columns: ColumnItem[] = [
 
 export const patients_table_columns_actions: ColumnType[] = [
   {
-    title: 'Action',
+    title: 'Actions',
     key: 'action',
     align: 'center',
     render: (record: { key: number }) => (
