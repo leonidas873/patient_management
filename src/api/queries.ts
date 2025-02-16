@@ -93,6 +93,7 @@ export const useLogin = () => {
     onSuccess: (data) => {
       navigate('/');
       setUser(data);
+      localStorage.setItem("token",data.token)
     },
     onError: (error) => {
       message.error(error.message || 'Login failed. Please try again.');
