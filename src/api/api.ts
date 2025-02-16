@@ -6,7 +6,6 @@ import {
   Patient,
   PatientsResponse
 } from '../types/apiTypes';
-import { objectToQueryParams } from '../utils/objectToQueryParams';
 import ENDPOINTS from './endpoints';
 import httpClient from './httpClient';
 import { PatientFilter } from './queries';
@@ -21,10 +20,11 @@ export const fetchPatients = async ({
   queryKey: [string, PatientFilter];
 }): Promise<PatientsResponse> => {
   const [, filters] = queryKey;
-  const queryString = objectToQueryParams(filters);
   const { data } = await httpClient.get<PatientsResponse>(
-    `${ENDPOINTS.GET_ALL_PATIENTS}?${queryString}`
-  );
+    `${ENDPOINTS.GET_ALL_PATIENTS}`
+  , {
+    params:filters
+  });
   return data;
 };
 
@@ -42,7 +42,7 @@ export const addPatient = async (
 
 export const updatePatient = async (
   id: number,
-  patientData: Partial<Patient>
+  patientData: PatientFormValues
 ): Promise<Patient> => {
   const response = await httpClient.put(
     ENDPOINTS.EDIT_PATIENT(id),

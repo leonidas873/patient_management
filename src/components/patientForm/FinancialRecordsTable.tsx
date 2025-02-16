@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Table } from 'antd';
 import { FinancialRecord } from '../../types/apiTypes';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,8 @@ const FinancialRecordsTable: React.FC<FinancialRecordsTableProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const columns = [
+  const columns = useMemo(()=>{
+    return [
     {
       title: t('financialRecordsTable.service'),
       dataIndex: 'service',
@@ -30,12 +31,12 @@ const FinancialRecordsTable: React.FC<FinancialRecordsTableProps> = ({
       key: 'date',
       render: (date: string) => date
     }
-  ];
+  ]},[t]);
 
-  const dataSource = records.map((record, index) => ({
+  const dataSource = useMemo(()=>{return records.map((record, index) => ({
     ...record,
     key: record.date + index
-  }));
+  }))},[]);
 
   return (
     <Table

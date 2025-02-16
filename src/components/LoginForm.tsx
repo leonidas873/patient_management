@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Input, Button, Card } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { useLogin } from '../../api/queries';
-import { LoginCredentials, ResponseError } from '../../types/apiTypes';
+import { useLogin } from '../api/queries';
+import { LoginCredentials, ResponseError } from '../types/apiTypes';
 import { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 

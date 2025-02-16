@@ -102,8 +102,6 @@ export const handlers = [
           'YYYY-MM-DD'
         ).toDate();
         const isInRange = addedDate >= fromDate && addedDate <= toDate;
-        console.log(addedDate, fromDate, toDate);
-        console.log(isInRange);
         return isInRange;
       });
     }

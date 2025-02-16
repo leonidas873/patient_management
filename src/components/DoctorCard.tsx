@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
-import { useAuthStore } from '../../store/authStore';
+import { useAuthStore } from '../store/authStore';
 import { useTranslation } from 'react-i18next';
 
 const DoctorCard: React.FC = () => {

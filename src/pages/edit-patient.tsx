@@ -1,14 +1,15 @@
 import React from 'react';
-import PatientForm from '../components/patientForm/PatientForm';
+import PatientForm, { PatientFormValues } from '../components/patientForm/PatientForm';
 import { useGetPatient, useUpdatePatient } from '../api/queries';
 import { useParams } from 'react-router-dom';
-import DoctorCard from '../components/Cards/DoctorCard';
+import DoctorCard from '../components/DoctorCard';
+import { Patient } from '../types/apiTypes';
 
 const EditPatient: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { mutate } = useUpdatePatient(id);
+  const { mutate } = useUpdatePatient(Number(id));
   const { data, isLoading } = useGetPatient(Number(id));
-  const onSubmit = (values) => {
+  const onSubmit = (values: PatientFormValues) => {
     mutate(values);
   };
   if (isLoading) return <div>Loading...</div>;

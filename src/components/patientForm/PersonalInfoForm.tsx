@@ -1,5 +1,5 @@
 import { Form, Input, Select } from 'antd';
-import DateInput from '../ui/DateInput';
+import DateInput from '../DateInput';
 import PhoneInput from './PhoneInput';
 import { useTranslation } from 'react-i18next';
 

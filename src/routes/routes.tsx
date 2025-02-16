@@ -4,7 +4,7 @@ import MainLayout from '../components/layout/MainLayout';
 import ProtectedRoute from '../components/ProtectedRoute';
 import { AddPatient, EditPatient, Login, PatientListPage } from '../pages';
 import PublicRoute from '../components/PublicRoute';
-import NotFound from '../pages/notFount';
+import NotFound from '../pages/notFound';
 
 const routes = [
   {

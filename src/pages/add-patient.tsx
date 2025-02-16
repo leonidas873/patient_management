@@ -3,7 +3,7 @@ import PatientForm, {
   PatientFormValues
 } from '../components/patientForm/PatientForm';
 import { useAddPatient } from '../api/queries';
-import DoctorCard from '../components/Cards/DoctorCard';
+import DoctorCard from '../components/DoctorCard';
 
 const AddPatient: React.FC = () => {
   const { mutate } = useAddPatient();

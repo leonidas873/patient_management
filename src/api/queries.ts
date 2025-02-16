@@ -75,8 +75,8 @@ export const useUpdatePatient = (id: number) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  return useMutation<Patient, Error, Partial<Patient>>({
-    mutationFn: (data: Partial<Patient>) => updatePatient(id, data),
+  return useMutation<Patient, Error, PatientFormValues>({
+    mutationFn: (data: PatientFormValues) => updatePatient(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['patient', id] });
       queryClient.invalidateQueries({ queryKey: ['patients'] });
@@ -92,7 +92,8 @@ export const useLogin = () => {
     mutationFn: loginUser,
     onSuccess: (data) => {
       navigate('/');
-      setUser(data);
+      const { token, ...updatedData } = data;
+      setUser(updatedData);
       localStorage.setItem("token",data.token)
     },
     onError: (error) => {

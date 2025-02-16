@@ -1,7 +1,7 @@
 import { Form, Input, Button, Select, Space, Slider } from 'antd';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { useGetDiseases } from '../../api/queries';
-import DateInput from '../ui/DateInput';
+import DateInput from '../DateInput';
 import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
@@ -42,7 +42,7 @@ function ConditionForm() {
           <>
             {fields.map((field) => (
               <Space
-                key={field.key}
+                key={field.key + new Date().toString()}
                 align="center"
                 style={{ display: 'flex', marginBottom: 8 }}
               >
