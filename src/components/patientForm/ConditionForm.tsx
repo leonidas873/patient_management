@@ -59,7 +59,6 @@ function ConditionForm() {
                   <Input placeholder={t('conditionForm.symptomNameLabel')} />
                 </Form.Item>
                 <Form.Item
-                  {...field}
                   name={[field.name, 'noteDate']}
                   rules={[
                     {
@@ -67,15 +66,13 @@ function ConditionForm() {
                       message: t('conditionForm.noteDateRequired')
                     }
                   ]}
-                  getValueFromEvent={(value, valueString) =>
-                    value ? valueString : undefined
-                  }
+                  
                 >
                   <DateInput
                     placeholder={t('conditionForm.noteDateLabel')}
-                    format="YYYY-MM-DD"
                   />
                 </Form.Item>
+
                 <Form.Item
                   {...field}
                   name={[field.name, 'severity']}
