@@ -67,7 +67,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ value = '', onChange }) => {
 
   return (
     <>
-      <Form.Item>
+      <Form.Item style={{marginBottom: "5px"}}>
         <Input
           placeholder={t('phoneInput.placeholder')}
           value={value}
