@@ -84,25 +84,36 @@ export const handlers = [
     }
     if (personalId) {
       patients = patients.filter(
-        (p) => p.personalInfo.personalId === personalId
+        (p) => p.personalInfo.personalId.includes(personalId)
       );
     }
     if (status) {
       patients = patients.filter((p) => p.personalInfo.status === status);
     }
-    if (dateFrom && dateTo) {
-      // Parse the incoming query dates using moment with the proper "DD-MM-YYYY" format.
-      const fromDate = moment(dateFrom, 'DD-MM-YYYY').toDate();
-      const toDate = moment(dateTo, 'DD-MM-YYYY').toDate();
-
+    if (dateFrom || dateTo) {
+      // Parse the provided dates if they exist.
+      const fromDate = dateFrom ? moment(dateFrom, 'DD-MM-YYYY').toDate() : null;
+      const toDate = dateTo ? moment(dateTo, 'DD-MM-YYYY').toDate() : null;
+    
       patients = patients.filter((p) => {
-        // Parse the addedDate using the correct format ("YYYY-MM-DD") because that's how it's stored.
-        const addedDate = moment(
-          p.personalInfo.addedDate,
-          'YYYY-MM-DD'
-        ).toDate();
-        const isInRange = addedDate >= fromDate && addedDate <= toDate;
-        return isInRange;
+        // Parse the addedDate (stored in "YYYY-MM-DD" format)
+        const addedDate = moment(p.personalInfo.addedDate, 'YYYY-MM-DD').toDate();
+    
+        // If both from and to dates are provided, check if addedDate is within the range.
+        if (fromDate && toDate) {
+          return addedDate >= fromDate && addedDate <= toDate;
+        }
+        // If only fromDate is provided, check if addedDate is on/after fromDate.
+        if (fromDate) {
+          return addedDate >= fromDate;
+        }
+        // If only toDate is provided, check if addedDate is on/before toDate.
+        if (toDate) {
+          return addedDate <= toDate;
+        }
+    
+        // Default: include the record.
+        return true;
       });
     }
 

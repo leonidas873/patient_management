@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Form, Input, Button, DatePicker, Select, Tag, Card } from 'antd';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getFiltersFromURL, updateSearchParams } from '../../utils/helpers';
 import moment from 'moment';
+import { getFiltersFromURL, updateSearchParams } from '../../utils/helpers';
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
@@ -30,7 +30,16 @@ const PatientsFilter: React.FC = () => {
   useEffect(() => {
     const filters = getFiltersFromURL(searchParams);
     setActiveFilters(filters);
-    form.setFieldsValue(filters);
+    const formValues: Record<string, any> = { ...filters };
+    if (filters.dateFrom && filters.dateTo) {
+      formValues.addedDateRange = [
+        moment(filters.dateFrom, 'DD-MM-YYYY'),
+        moment(filters.dateTo, 'DD-MM-YYYY')
+      ];
+    } else {
+      formValues.addedDateRange = undefined;
+    }
+    form.setFieldsValue(formValues);
   }, [searchParams, form]);
 
   const onFinish = (values: FilterValues) => {
@@ -42,13 +51,8 @@ const PatientsFilter: React.FC = () => {
     const filteredValues = Object.fromEntries(
       Object.entries(values).filter(([_, v]) => v !== undefined && v !== '')
     );
-    setSearchParams(
-      updateSearchParams(
-        Object.fromEntries(
-          Object.entries(filteredValues).map(([k, v]) => [k, String(v)])
-        )
-      )
-    );
+    setSearchParams(updateSearchParams(filteredValues));
+    setActiveFilters(filteredValues);
   };
 
   const onReset = () => {
@@ -57,12 +61,33 @@ const PatientsFilter: React.FC = () => {
     setSearchParams({});
   };
 
+  const displayFilters = useMemo(() => {
+    const filters = { ...activeFilters };
+    if (filters.dateFrom || filters.dateTo) {
+      const from = filters.dateFrom ? filters.dateFrom : '';
+      const to = filters.dateTo ? filters.dateTo : '';
+      filters.addedDateRange = from && to ? `${from} - ${to}` : from || to;
+      delete filters.dateFrom;
+      delete filters.dateTo;
+    }
+    return filters;
+  }, [activeFilters]);
+
   const removeFilter = (key: string) => {
-    const updatedFilters = { ...activeFilters };
-    delete updatedFilters[key];
+    let updatedFilters = { ...activeFilters };
+    if (key === 'addedDateRange') {
+      delete updatedFilters.dateFrom;
+      delete updatedFilters.dateTo;
+    } else {
+      delete updatedFilters[key];
+    }
     setActiveFilters(updatedFilters);
     setSearchParams(updateSearchParams(updatedFilters));
-    form.setFieldsValue({ [key]: undefined });
+    if (key === 'addedDateRange') {
+      form.resetFields(['addedDateRange']);
+    } else {
+      form.resetFields([key]);
+    }
   };
 
   return (
@@ -112,13 +137,13 @@ const PatientsFilter: React.FC = () => {
           </Button>
         </div>
       </Form>
-      {Object.keys(activeFilters).length > 0 && (
+      {Object.keys(displayFilters).length > 0 && (
         <div className="mt-6">
           <h3 className="mb-2 text-lg font-semibold text-gray-700 dark:text-white">
             {t('patientsFilter.activeFilters')}:
           </h3>
           <div className="flex flex-wrap gap-2">
-            {Object.entries(activeFilters).map(([key, value]) => (
+            {Object.entries(displayFilters).map(([key, value]) => (
               <Tag
                 key={key}
                 closable

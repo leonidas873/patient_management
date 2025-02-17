@@ -8,7 +8,7 @@ interface PublicRouteProps {
 
 const PublicRoute: React.FC<PublicRouteProps> = ({ children }) => {
   const { user } = useAuthStore();
-  if (user?.token) {
+  if (user) {
     return <Navigate to="/" replace />;
   }
 

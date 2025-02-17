@@ -28,7 +28,6 @@ function PatientsTable() {
     ...col,
     ...{ title: <>{t(col.title)}</> }
   }));
-  // console.log(t(translatedColumns[0].title))
   const columns =
     user.role === Role.Admin || user.role === Role.Doctor
       ? [...translatedColumns, ...patients_table_columns_actions]
@@ -40,7 +39,7 @@ function PatientsTable() {
   }));
 
   return (
-    <Card>
+    <>
       <PatientsListHeader />
       <Table
         dataSource={dataSource}
@@ -57,7 +56,7 @@ function PatientsTable() {
           }
         }}
       />
-    </Card>
+    </>
   );
 }
 
