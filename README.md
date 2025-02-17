@@ -18,3 +18,15 @@ you can test on this 3 users
 - **Username:** `nurse1`
 - **Password:** `nursepass`
 - **Role:** Nurse
+
+
+1. **starting application**
+
+```sh
+npm run dev
+```
+2. **starting application**
+
+```sh
+npm run format
+```
